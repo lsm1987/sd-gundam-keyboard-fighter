@@ -1,0 +1,25 @@
+.suggest_common {
+ width:250px;
+}
+
+.suggest_input {
+ border:1px solid #2969b0;
+ height:21px;
+ padding-top:2px;
+ font-size:12px;
+ font-family:Dotum,µ¸¿ò;
+} 
+
+.suggest_wrap {
+ position:absolute;
+ z-index:1000;
+ /*background-color:red;
+ height:300px;*/
+}
+
+.suggest_frame {
+ padding:0px;
+ margin:0px;
+ border-style:none;
+ display:none;
+}
