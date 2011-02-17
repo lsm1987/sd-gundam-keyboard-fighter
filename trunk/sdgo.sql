@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 호스트: localhost
--- 처리한 시간: 11-02-17 22:34 
+-- 처리한 시간: 11-02-17 22:46 
 -- 서버 버전: 5.1.41
 -- PHP 버전: 5.2.12
 
@@ -25,6 +25,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 테이블 구조 `capsule`
 --
 
+DROP TABLE IF EXISTS `capsule`;
 CREATE TABLE IF NOT EXISTS `capsule` (
   `No` int(11) DEFAULT NULL,
   `Name` varchar(20) DEFAULT NULL,
@@ -109,6 +110,7 @@ INSERT INTO `capsule` (`No`, `Name`, `Cost`, `Unit1ID`, `Unit2ID`, `Unit3ID`, `U
 -- 테이블 구조 `initcost`
 --
 
+DROP TABLE IF EXISTS `initcost`;
 CREATE TABLE IF NOT EXISTS `initcost` (
   `Rank` varchar(2) DEFAULT NULL,
   `Level` varchar(7) DEFAULT NULL,
@@ -163,6 +165,7 @@ INSERT INTO `initcost` (`Rank`, `Level`, `InitCost`) VALUES
 -- 테이블 구조 `level`
 --
 
+DROP TABLE IF EXISTS `level`;
 CREATE TABLE IF NOT EXISTS `level` (
   `No` int(11) DEFAULT NULL,
   `Level` varchar(7) DEFAULT NULL
@@ -195,6 +198,7 @@ INSERT INTO `level` (`No`, `Level`) VALUES
 -- 테이블 구조 `levelexp`
 --
 
+DROP TABLE IF EXISTS `levelexp`;
 CREATE TABLE IF NOT EXISTS `levelexp` (
   `RankPrefix` char(1) DEFAULT NULL,
   `RankSuffix` char(1) DEFAULT NULL,
@@ -409,6 +413,7 @@ INSERT INTO `levelexp` (`RankPrefix`, `RankSuffix`, `Level`, `Exp`) VALUES
 -- 테이블 구조 `mix`
 --
 
+DROP TABLE IF EXISTS `mix`;
 CREATE TABLE IF NOT EXISTS `mix` (
   `ResultUnitID` int(11) DEFAULT NULL,
   `KeyUnitID` int(11) DEFAULT NULL,
@@ -619,6 +624,7 @@ INSERT INTO `mix` (`ResultUnitID`, `KeyUnitID`, `KeyUnitLevel`, `MatUnit1ID`, `M
 -- 테이블 구조 `promotion`
 --
 
+DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE IF NOT EXISTS `promotion` (
   `RecordDate` date DEFAULT NULL,
   `UserRank` varchar(6) DEFAULT NULL,
@@ -807,6 +813,7 @@ INSERT INTO `promotion` (`RecordDate`, `UserRank`, `Number`, `ExpMax`, `ExpMin`)
 -- 테이블 구조 `rankprefix`
 --
 
+DROP TABLE IF EXISTS `rankprefix`;
 CREATE TABLE IF NOT EXISTS `rankprefix` (
   `No` int(11) DEFAULT NULL,
   `RankPrefix` char(1) DEFAULT NULL
@@ -828,6 +835,7 @@ INSERT INTO `rankprefix` (`No`, `RankPrefix`) VALUES
 -- 테이블 구조 `ranksuffix`
 --
 
+DROP TABLE IF EXISTS `ranksuffix`;
 CREATE TABLE IF NOT EXISTS `ranksuffix` (
   `No` int(11) DEFAULT NULL,
   `RankSuffix` char(1) DEFAULT NULL
@@ -849,6 +857,7 @@ INSERT INTO `ranksuffix` (`No`, `RankSuffix`) VALUES
 -- 테이블 구조 `skill`
 --
 
+DROP TABLE IF EXISTS `skill`;
 CREATE TABLE IF NOT EXISTS `skill` (
   `Name` varchar(20) DEFAULT NULL,
   `No` int(11) DEFAULT NULL,
@@ -970,6 +979,7 @@ INSERT INTO `skill` (`Name`, `No`, `Description`) VALUES
 -- 테이블 구조 `unit`
 --
 
+DROP TABLE IF EXISTS `unit`;
 CREATE TABLE IF NOT EXISTS `unit` (
   `UnitID` int(11) DEFAULT NULL,
   `UnitNo` int(11) DEFAULT NULL,
@@ -1424,6 +1434,7 @@ INSERT INTO `unit` (`UnitID`, `UnitNo`, `Model`, `RankPrefix`, `RankSuffix`, `Pr
 -- 테이블 구조 `userrank`
 --
 
+DROP TABLE IF EXISTS `userrank`;
 CREATE TABLE IF NOT EXISTS `userrank` (
   `No` int(11) DEFAULT NULL,
   `UserRank` varchar(6) DEFAULT NULL,
@@ -1465,6 +1476,7 @@ INSERT INTO `userrank` (`No`, `UserRank`, `NeedExp`, `Condition`) VALUES
 -- 테이블 구조 `weapon`
 --
 
+DROP TABLE IF EXISTS `weapon`;
 CREATE TABLE IF NOT EXISTS `weapon` (
   `Name` varchar(20) DEFAULT NULL,
   `No` int(11) DEFAULT NULL
