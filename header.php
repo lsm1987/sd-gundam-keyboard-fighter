@@ -34,7 +34,7 @@ include_once("../inc/analytics.php");
 </td>
 </tr>
 
-<!--메뉴-->
+<!--메뉴. 추가시마다 sytles.css의 #nav ul 수정하기-->
 <tr>
 <td id="nav">
 	<ul>
@@ -44,6 +44,7 @@ include_once("../inc/analytics.php");
 		<li><a href="mix_search.php">조합식 검색</a></li>
 		<li><a href="capsule_search.php">캡슐머신 검색</a></li>
 		<li><a href="user_rank.php">유저 계급표</a></li>
+		<li><a href="diorama_analysis.php">유닛진열장 분석(베타)</a></li>
 		<li><a href="skill_weapon_list.php">스킬/무기 목록</a></li>
 		<li><a href="data_table.php">자료 테이블</a></li>
 	</ul>

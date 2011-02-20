@@ -16,6 +16,20 @@ function GetDayOfWeek($date){
  return $week[date("w", $date)];
 }
 
+//URL의 html 소스 얻기
+//php.ini에서 extension=php_curl.dll 허용
+function GetHTML($url){
+	$ch = curl_init();
+	$timeout = 5; // set to zero for no timeout
+	curl_setopt ($ch, CURLOPT_URL, $url);
+	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+	$file_contents = curl_exec($ch);
+	curl_close($ch);
+	return $file_contents;
+}
+
+//캡파관련 공통//////////////////////////////////////////////////////////////
 //영어속성을 한글속성으로
 function GetPropertyKor($property){
 	if($property=="muk"){
@@ -44,6 +58,17 @@ function PropertyToNum($property){
 		return 1;
 	}else{
 		return 2;
+	}
+}
+
+//숫자를 속성으로
+function NumToProperty($num){
+	if($num==0){
+		return "묵";
+	}else if($num==1){
+		return "찌";
+	}else{
+		return "빠";
 	}
 }
 
@@ -84,7 +109,7 @@ function GetWeaponImageUrl($no){
 	return "http://img.gundam.netmarble.net/img/unitinfo/weapon/weapon_".$no.".gif";
 }
 
-//쿼리문 관련 함수//////////////////////////////////////////
+//쿼리문 관련 공통 함수//////////////////////////////////////////
 //함수의 조건문을 만든다.
 function GenerateQueryCondition($arrCondition){
 	$isFirstCondition=true;	//첫번째 조건인가?
