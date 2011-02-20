@@ -42,7 +42,7 @@ if($unitID!=""){
 지정한 유닛의 상세정보를 조회합니다.<br/>
 <br/>
 <form action="unit_info.php" method="get">
-	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="suggest_input suggest_common" value="<?=$model?>"/>
+	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="inputtext suggest_common" value="<?=$model?>"/>
 	<div id='model_sug' class="suggest_wrap suggest_common">
 		<iframe id="model_frame" src="ajax_suggest.php?prefix=model" frameborder="0" scrolling="no" class="suggest_frame suggest_common"></iframe>
 	</div>

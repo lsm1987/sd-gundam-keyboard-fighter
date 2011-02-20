@@ -61,7 +61,7 @@ if(strlen($unitID)==0){ //조건 없을 때
 
 <form id="unitName_form" action="capsule_search.php" method="get">
 	<!--검색어-->
-	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="suggest_input suggest_common" value="<?=$model?>"/>
+	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="inputtext suggest_common" value="<?=$model?>"/>
 	<input type="submit" value="검색" />
 	<!--서제스트 결과-->
 	<div id='model_sug' class="suggest_wrap suggest_common">

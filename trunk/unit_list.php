@@ -123,7 +123,7 @@ $result=mysql_query($query);
 		<option value="equal" <?if($modelOption=="equal"){echo "selected='selected'"; }?> >입력값과 일치</option>
 	</select>
 	&nbsp;
-	<input type="text" autocomplete="off" id="model_q" name="model_q" class="suggest_input suggest_common" value="<?=$model?>"/>
+	<input type="text" autocomplete="off" id="model_q" name="model_q" class="inputtext suggest_common" value="<?=$model?>"/>
 	<div id='model_sug' class="suggest_wrap suggest_common">
 		<iframe id="model_frame" src="ajax_suggest.php?prefix=model" frameborder="0" scrolling="no" class="suggest_frame suggest_common"></iframe>
 	</div>
@@ -135,7 +135,7 @@ $result=mysql_query($query);
 		<option value="3" <?if($skillSlot=="3"){echo "selected='selected'"; }?> >3번 스킬</option>
 	</select>
 	&nbsp;
-	<input type="text" autocomplete="off" id="skillName_q" name="skillName_q" class="suggest_input suggest_common" value="<?=$skillName?>"/>
+	<input type="text" autocomplete="off" id="skillName_q" name="skillName_q" class="inputtext suggest_common" value="<?=$skillName?>"/>
 	<div id='skillName_sug' class="suggest_wrap suggest_common">
 		<iframe id="skillName_frame" src="ajax_suggest.php?prefix=skillName" frameborder="0" scrolling="no" class="suggest_frame suggest_common"></iframe>
 	</div>

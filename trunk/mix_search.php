@@ -77,7 +77,7 @@ $result=mysql_query($query_final);
 		<option value="mat" <?if($searchRange=="mat"){echo "selected='selected'"; }?> >재료유닛</option>
 	</select>
 	&nbsp;&nbsp;
-	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="suggest_input suggest_common" value="<?=$model?>"/>
+	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="inputtext suggest_common" value="<?=$model?>"/>
 	<!--서제스트 결과-->
 	<div id='model_sug' class="suggest_wrap suggest_common">
 		<iframe id="model_frame" src="ajax_suggest.php?prefix=model" frameborder="0" scrolling="no" class="suggest_frame suggest_common"></iframe>

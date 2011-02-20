@@ -112,6 +112,14 @@ li ol, li ul {
  text-align:right;
 }
 
+.inputtext{
+	border:1px solid #2969b0;
+	height:21px;
+	padding-top:2px;
+	font-size:12px;
+	font-family:Dotum,돋움;
+}
+
 #container {
 	margin:0;
 	padding:0;
@@ -166,7 +174,7 @@ li ol, li ul {
 	padding: 0;
 	margin: 0;
 	height: 70px;
-	width:1000px; /*줄바뀜 문제 해결 못함. 메뉴 늘어날때마다 바꿔줄것*/
+	width:1200px; /*줄바뀜 문제 해결 못함. 메뉴 늘어날때마다 바꿔줄것*/
 	white-space:nowrap;
 }
 
