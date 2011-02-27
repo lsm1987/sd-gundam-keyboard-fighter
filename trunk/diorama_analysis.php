@@ -67,16 +67,16 @@ if($rID!=""){
 
 ?>
 <!--유닛진열장 분석 페이지-->
-<h2>유닛진열장 분석(베타)</h2>
+<h2>유닛진열장 분석</h2>
 유닛진열장의 현황과 유닛을 분석합니다. 유닛이 많을 수록 시간이 오래 걸립니다.<br/>
 <br/>
-유닛진열장 ID는 마이룸의 유닛진열장 이동 후 주소창의 rid항목을,<br/>
+유닛진열장 ID는 마이룸 이동 후 주소창의 rid항목을,<br/>
 또는 마이룸에서 우클릭->소스보기->유닛진열장을 검색하여 나오는 링크 주소의 rid항목을 복사하시면됩니다.<br/>
 예: http://gundam.netmarble.net/MyRoom/Diorama/mr_UnitView.asp?rid=<font color="red">d0c45dbe135abe922e45bb702af8fcbf</font>&menuId=2<br/>
 <br/>
 
 <form action="diorama_analysis.php" method="get">
-	유닛진열장 ID: <input type="text" autocomplete="off" class="inputtext" style="width:300px"
+	마이룸 rID: <input type="text" autocomplete="off" class="inputtext" style="width:300px"
 	id="rID" name="rID" value="<?=$rID?>"/>
 	<input type="submit" value="분석" />
 </form>
@@ -84,7 +84,7 @@ if($rID!=""){
 
 <?
 if(count($arrUnit)==0){
-	echo "유닛진열장 ID가 잘못되었거나 오류가 발생하였습니다.";
+	echo "마이룸 rID가 잘못되었거나 오류가 발생하였습니다.";
 }else{
 	//결과 있는 경우
 ?>
@@ -100,6 +100,7 @@ if(count($arrUnit)==0){
 	<th colspan="5">전적</th>
 	<th colspan="3">격추수</th>
 	<th rowspan="2" class="table-sortable:numeric">랭킹</th>
+	<th rowspan="2" class="table-sortable:alphanumeric">생성일</th>
 </tr>
 <tr>
 	<th class="table-sortable:alphanumeric">유닛명</th>
@@ -149,9 +150,9 @@ if(count($arrUnit)==0){
 	<th>
 		<select onchange="Table.filter(this,this)">
 			<option value="function(){return true;}">All</option>
-			<option value="function(val){return val>=100;}">&gt;= 100</option>
-			<option value="function(val){return val>=500;}">&gt;= 500</option>
-			<option value="function(val){return val>=1000;}">&gt;= 1000</option>
+			<option value="function(val){return (val.replace(/,/,''))>=100;}">&gt;= 100</option>
+			<option value="function(val){return (val.replace(/,/,''))>=500;}">&gt;= 500</option>
+			<option value="function(val){return (val.replace(/,/,''))>=1000;}">&gt;= 1000</option>
 		</select>
 	</th>
 	<th></th>
@@ -174,6 +175,7 @@ if(count($arrUnit)==0){
 			<option value="function(val){return (val)<=100;}">&lt;= 100</option>
 		</select>
 	</th>
+	<th></th>
 </th>
 </thead>
 <tbody>
@@ -184,7 +186,7 @@ for($i=0; $i<count($arrUnit); $i++){
 	$unitrank=(($unit[xUnitRank]==0)?"-":$unit[xUnitRank]);
 	$killrate=0;
 	if($unit[UnitDead]!=0){
-		$killrate=$unit[xUnitKill]/$unit[UnitDead];
+		$killrate=str_replace(",","",$unit[xUnitKill])/str_replace(",","",$unit[UnitDead]);
 	}
 	$killrate=number_format(floor($killrate*100)/100,2,'.','');//소수점 2자리 이하 버림
 
@@ -208,6 +210,7 @@ for($i=0; $i<count($arrUnit); $i++){
 		<td class='right'>".$killrate."</td>
 		
 		<td class='right'>$unitrank</td>
+		<td class='right'>$unit[UnitCreateDate]</td>
 		</tr>";
 }
 ?>
