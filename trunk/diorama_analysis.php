@@ -70,7 +70,7 @@ if($rID!=""){
 <h2>유닛진열장 분석</h2>
 유닛진열장의 현황과 유닛을 분석합니다. 유닛이 많을 수록 시간이 오래 걸립니다.<br/>
 <br/>
-유닛진열장 ID는 마이룸 이동 후 주소창의 rid항목을,<br/>
+마이룸 rID는 마이룸 이동 후 주소창의 rid항목을,<br/>
 또는 마이룸에서 우클릭->소스보기->유닛진열장을 검색하여 나오는 링크 주소의 rid항목을 복사하시면됩니다.<br/>
 예: http://gundam.netmarble.net/MyRoom/Diorama/mr_UnitView.asp?rid=<font color="red">d0c45dbe135abe922e45bb702af8fcbf</font>&menuId=2<br/>
 <br/>
