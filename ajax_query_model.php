@@ -2,6 +2,7 @@
 //UTF-8 (BOM없음)
 ob_start(); //Cannot modify header information 워닝 막기
 include_once("inc/dbconfig.php");
+include_once("inc/function.php");
 $conn=mysql_connect($server,$username,$password);
 @mysql_select_db($database, $conn) or die( "Unable to select database");
 mysql_query("set names utf8", $conn);
@@ -17,7 +18,7 @@ echo "<rq>$_GET[q]</rq>";
 $query="SELECT Model FROM unit WHERE Model LIKE '$_GET[q]%' ORDER BY Model ASC";
 $result=mysql_query($query);
 while($row = mysql_fetch_array($result)){
- echo "<item>$row[Model]</item>";
+ echo "<item>".ConvertXMLString($row[Model])."</item>";
 }
 
 //키워드를 포함하는 유닛명 구하기 (3개 오름차순)
@@ -25,7 +26,7 @@ while($row = mysql_fetch_array($result)){
 $query="SELECT Model FROM unit WHERE Model LIKE '%$_GET[q]%' AND Model Not In(SELECT Model FROM unit WHERE Model LIKE '$_GET[q]%') ORDER BY Model ASC";
 $result=mysql_query($query);
 while($row = mysql_fetch_array($result)){
- echo "<r_item>$row[Model]</r_item>";
+ echo "<r_item>".ConvertXMLString($row[Model])."</r_item>";
 }
 
 //XML 끝

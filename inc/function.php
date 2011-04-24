@@ -29,6 +29,13 @@ function GetHTML($url){
 	return $file_contents;
 }
 
+//XML안의 문자열 중 특문을 적합한 탈출자로 변경
+function ConvertXMLString($str){
+	$src = array("<", ">", '"');
+	$dest = array("&lt;", "&gt;", "&quot;");
+	return str_replace($src, $dest, $str);
+}
+
 //캡파관련 공통//////////////////////////////////////////////////////////////
 //영어속성을 한글속성으로
 function GetPropertyKor($property){

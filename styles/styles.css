@@ -174,7 +174,7 @@ li ol, li ul {
 	padding: 0;
 	margin: 0;
 	height: 70px;
-	width:1200px; /*줄바뀜 문제 해결 못함. 메뉴 늘어날때마다 바꿔줄것*/
+	width:1300px; /*줄바뀜 문제 해결 못함. 메뉴 늘어날때마다 바꿔줄것*/
 	white-space:nowrap;
 }
 
@@ -237,4 +237,35 @@ li ol, li ul {
  height:100px;
  overflow-y:scroll;
  line-height:1.9em;
+}
+
+.sdgoTable {
+	border-collapse:collapse;
+	font-size:9pt;
+	font-family:dotum;
+}
+
+.sdgoTable a{
+	text-decoration:underline;
+}
+
+.sdgoTable th {
+	background-color:#333;
+	color:white;
+	border:1px solid #666;
+	padding:3px;
+}
+
+.sdgoTable th a {
+ color:white;
+}
+.sdgoTable th a:hover {
+	color: #4E67A2;
+}
+
+.sdgoTable td {
+ color:black;
+ border: 1px solid #666;
+ padding:3px;
+ line-height:1.5em;
 }

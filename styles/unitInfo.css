@@ -4,35 +4,7 @@
 }
 
 .unitInfo {
-	border-collapse:collapse;
-	font-size:9pt;
-	font-family:dotum;
 	width:100%;
-}
-
-.unitInfo a{
-	text-decoration:underline;
-}
-
-.unitInfo th {
-	background-color:#333;
- color:white;
- border:1px solid #666;
- padding:3px;
-}
-
-.unitInfo th a {
- color:white;
-}
-.unitInfo th a:hover {
-	color: #4E67A2;
-}
-
-.unitInfo td {
- color:black;
- border: 1px solid #666;
- padding:3px;
- line-height:1.5em;
 }
 
 .unitInfo .rank {
