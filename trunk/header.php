@@ -13,7 +13,9 @@ include_once("inc/function.php");
 <link rel="stylesheet" href="styles/styles.css" type="text/css" />
 <link rel="stylesheet" href="styles/table.css" type="text/css" />
 <link rel="stylesheet" href="styles/unitInfo.css" type="text/css" />
+<link rel="stylesheet" href="styles/unitSimulator.css" type="text/css" />
 <link rel="stylesheet" href="styles/suggest.css" type="text/css" />
+<script language="javascript" src="scripts/jquery-1.5.2.min.js"></script>
 <script language="javascript" src="scripts/scripts.js"></script>
 <script language="javascript" src="scripts/table.js"></script>
 <script language="javascript" src="scripts/suggest.js"></script>
@@ -39,8 +41,9 @@ include_once("../inc/analytics.php");
 <td id="nav">
 	<ul>
 		<li><a href="index.php">메인페이지</a></li>
-		<li><a href="unit_info.php">유닛 정보</a></li>
 		<li><a href="unit_list.php">유닛 목록</a></li>
+		<li><a href="unit_info.php">유닛 정보</a></li>
+		<li><a href="unit_simulator.php">유닛 시뮬레이터</a></li>
 		<li><a href="mix_search.php">조합식 검색</a></li>
 		<li><a href="capsule_search.php">캡슐머신 검색</a></li>
 		<li><a href="user_rank.php">유저 계급표</a></li>

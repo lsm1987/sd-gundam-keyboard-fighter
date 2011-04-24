@@ -7,13 +7,15 @@
  무료계정을 사용 중이기 때문에 일일 허용 트래픽(100MB) 초과시 사이트 접속이 원활하지 않을 수 있습니다.<br/>
  건의 사항 및 오류 제보는 만든이의 마이룸이나 블로그 방명록에 올려주시면 감사하겠습니다.<br/>
  캡파 닉네임 '에그'를 공방에서 만났을 때 아는 척 해주시면 무척 반갑겠습니다 =_=ㅋㅋ<br/>
+ 또한 키보드파이터의 DB와 소스는 오픈소스로 공개중입니다. [<a href="http://code.google.com/p/sd-gundam-keyboard-fighter/" target="_blank">여기</a>]에서 받으실 수 있습니다.<br/>
  <br/>
- ps. 키보드파이터의 DB와 소스를 오픈소스로 공개하였습니다. [<a href="http://code.google.com/p/sd-gundam-keyboard-fighter/" target="_blank">여기</a>]에서 받으실 수 있습니다.<br/>
+ ps. 수습사원에서 정직원으로 진급! 올레!!<br/>
 </p>	
 
 <h3>주요 업데이트 일자</h3>
 <p>
 <div id="update">
+2011.04.24 : 04월 21일 업데이트 반영. 유닛 시뮬레이터 메뉴 신설. 베타 테스트 중<br/>
 2011.03.25 : 03월 17일 업데이트 반영.<br/>
 2011.02.19 : 유닛진열장 분석 메뉴 신설. 베타 테스트 중<br/>
 2011.02.17 : 02월 17일 업데이트 반영. 키보드파이터 DB와 소스를 오픈소스화<br/>
@@ -34,10 +36,10 @@
 
 <h3>도움 주신 분들</h3>
 <p>
-<img src="http://img.gundam.netmarble.net/img/ranking/rank/10.gif" style="vertical-align:middle"/>&nbsp;<a href="javascript:GoMyroom('87de59d02fe185f15f9f708f9197e87c')">제네식엑시아</a>&nbsp;&nbsp;
-<img src="http://img.gundam.netmarble.net/img/ranking/rank/12.gif" style="vertical-align:middle"/>&nbsp;<a href="javascript:GoMyroom('10927f808b47ccf3dc7cf2a0e2167ddf')">참두부</a>&nbsp;&nbsp;
-<img src="http://img.gundam.netmarble.net/img/ranking/rank/10.gif" style="vertical-align:middle"/>&nbsp;<a href="javascript:GoMyroom('4f7348aa74886d4ba57f1481f395fa0c')">춤추는리가지</a>&nbsp;&nbsp;
-<img src="http://img.gundam.netmarble.net/img/ranking/rank/11.gif" style="vertical-align:middle"/>&nbsp;<a href="javascript:GoMyroom('33b22ceda218c5a6cfe6b4d42cc713b7')">메가날백</a>&nbsp;&nbsp;
+<a href="javascript:GoMyroom('87de59d02fe185f15f9f708f9197e87c')">제네식엑시아</a>,&nbsp;
+<a href="javascript:GoMyroom('10927f808b47ccf3dc7cf2a0e2167ddf')">참두부</a>,&nbsp;
+<a href="javascript:GoMyroom('4f7348aa74886d4ba57f1481f395fa0c')">춤추는리가지</a>,&nbsp;
+<a href="javascript:GoMyroom('33b22ceda218c5a6cfe6b4d42cc713b7')">메가날백</a>
 </p>
 
 <h3>만든이 정보</h3>

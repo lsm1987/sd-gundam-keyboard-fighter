@@ -76,7 +76,7 @@ if($unitID==""){
 <td>
 
 	<!--유닛 기본정보-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th>ID</th>
 	<td colspan="4"><?=$infoRow[UnitID]?></td>
@@ -119,7 +119,7 @@ if($unitID==""){
 <td colspan="2">
 
 	<!--유닛 설명-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th>유닛 설명</th>
 	</tr>
@@ -129,7 +129,7 @@ if($unitID==""){
 	</table>
 
 	<!--무기-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th colspan="3">무기</th>
 	</tr>
@@ -152,7 +152,7 @@ if($unitID==""){
  
 <?if($infoRow[Modification]=="on"){ //가변기만 출력 ?>
 	<!--가변 후 무기-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th colspan="3">가변 후 무기</th>
 	</tr>
@@ -175,7 +175,7 @@ if($unitID==""){
 <?}?>
  
 	<!--스킬-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th colspan="3">스킬</th>
 	</tr>
@@ -202,9 +202,9 @@ if($unitID==""){
 	</table>
  
 	<!--성능-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
-	<th colspan="3">성능</th>
+	<th colspan="3">성능 (<a href="unit_simulator.php?unitID_q=<?=$infoRow[UnitID]?>">유닛 시뮬레이터</a>)</th>
 	</tr>
 	<tr>
 	<th class="leftHeader">유닛HP</th>
@@ -243,7 +243,7 @@ if($unitID==""){
 	</table>
  
 	<!--획득방법-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th colspan="2">획득 방법</th>
 	</tr>
@@ -327,7 +327,7 @@ if($num==0){ echo "없음"; }
 	</table>
  
 	<!--기타 정보-->
-	<table class="unitInfo">
+	<table class="sdgoTable unitInfo">
 	<tr>
 	<th colspan="2">기타 정보</th>
 	</tr>
