@@ -1,14 +1,29 @@
 .unitSimulator{
 }
 
-.unitSimulator .change{
-	
+#simulatorConfig .rank{
+	width:40px;
 }
 
-.unitSimulator .right{
+#simulatorConfig .property{
+	width:40px;
+}
+
+#simulatorStat .change{	
+}
+
+#simulatorStat .right{
 	padding-right:10px;
 }
 
-.unitSimulator input{
+#simulatorStat .finalStat{
+	font-weight:bold;
+}
+
+#simulatorStat input{
 	width:15px;
+}
+
+#simulatorEtc .header {
+	width:580px;
 }
