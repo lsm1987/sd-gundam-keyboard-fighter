@@ -28,6 +28,16 @@ arrPoint[1] = new Array(0, 0, 0, 0, 0, 0); //오버커스텀
 //속성
 var numProperty=0;
 
+//레벨별 획득 포인트
+var arrLevelPoint = new Array( 0, 0, 0, 0,
+										1, 1, 1, 1,
+										1, 1, 0, 2, 2, 3, 0);
+var maxPointCustom=0;
+var maxPointOverCustom=0;
+
+//레벨별 경험치구간
+var arrLevelExp = new Array();
+
 //스탯 테이블의 지정한 셀에 값 셋팅
 function SetStatValue(row, col, val, fixed){
 	$("#simulatorStat tbody tr:eq("+row+") td:eq("+col+")").text(val.toFixed(fixed));
@@ -55,8 +65,7 @@ function GetStatGraphUrl(basicStat, customStat, overCustomStat, property){
 }
 
 //관련 변수 초기화
-function SimulatorInit(arrStatBasic, arrSkill, property){
-	//기본스탯 저장
+function SimulatorInit(arrStatBasic, arrSkill, property, levelExp){
 	arrStat=arrStatBasic;
 	
 	//스탯 상승률 타입 검사
@@ -74,20 +83,58 @@ function SimulatorInit(arrStatBasic, arrSkill, property){
 			break;
 		}		
 	}
-	$("#simulatorStat #note").text(statNote);
+	statNote += "<br/>";
+	for(i=0; i<2; i++){
+		if(i==0){ statNote += "커스텀 증가량: "; }
+		else { statNote += "오버커스텀 증가량: "; }
+
+		for(j=0; j<6; j++){
+			statNote += arrStatIncrease[statIncreseType][i][j];
+			if(j<5) statNote += " / ";
+		}
+		statNote += "<br/>";
+	}
 	
-	//속성
+	$("#simulatorStat .note").html(statNote);
+	
 	numProperty=property;
+	arrLevelExp=levelExp;
 	
-	//갱신
-	SimulatorUpdate();
+	//초기 레벨에 따른 갱신
+	simulatorLevelChange();
+}
+
+//레벨 변경
+function simulatorLevelChange(){
+	for(i=0; i<2; i++){
+		for(j=0; j<6; j++){
+			arrPoint[i][j]=0;
+		}
+	}
+
+	maxPointCustom = 0;
+	maxPointOverCustom = 0;
+	var levelIdx=$("#simulatorConfig .level").val();
+	for(i=0; i<=levelIdx; i++){
+		if(i<=7){
+			maxPointCustom+=arrLevelPoint[i];
+		}else{
+			maxPointOverCustom+=arrLevelPoint[i];
+		}
+	}
+	$("#simulatorConfig .point_custom").text(maxPointCustom);
+	$("#simulatorConfig .point_overcustom").text(maxPointOverCustom);
+	
+	SimulatorStatUpdate();
+	SimulatorEtcUpdate_Exp();
 }
 
 //포인트 변경
 function simulatorPointChange(type, stat, val){
 	//기본커스텀
 	var pointCol=2;
-	var maxPoint=4;
+	var maxPoint=maxPointCustom;
+	var pointName="커스텀 포인트";
 	//오버커스텀
 	if(type==1){
 		/*
@@ -97,7 +144,8 @@ function simulatorPointChange(type, stat, val){
 		}
 		*/
 		pointCol=5;
-		maxPoint=9;
+		maxPoint=maxPointOverCustom;
+		var pointName="오버커스텀 포인트";
 	}	
 
 	if(val<0 && (GetStatValue(stat, pointCol)<=0 || GetStatValue(6, pointCol)<=0)){
@@ -105,7 +153,8 @@ function simulatorPointChange(type, stat, val){
 		return;
 	}
 	if(val>0 && GetStatValue(6, pointCol)>=maxPoint){
-		alert(maxPoint+" 초과의 포인트를 줄 수 없습니다.");
+		
+		alert("'"+pointName+"'를 넘는 포인트를 줄 수 없습니다.");
 		return;
 	}
 	if(val>0){
@@ -118,11 +167,11 @@ function simulatorPointChange(type, stat, val){
 	}
 	
 	arrPoint[type][stat] += val;
-	SimulatorUpdate();
+	SimulatorStatUpdate();
 }
 
-//테이블 업데이트
-function SimulatorUpdate(){
+//스탯 테이블 업데이트
+function SimulatorStatUpdate(){
 	
 	var basicStatTotal=0;
 	
@@ -168,5 +217,25 @@ function SimulatorUpdate(){
 	
 	SetStatValue(6, 7, finalStatTotal, 1);
 	
-	$("#simulatorStat #frameGraph").attr("src", GetStatGraphUrl(arrStat, customStat, overCustomStat, numProperty));
+	$("#simulatorStat .frameGraph").attr("src", GetStatGraphUrl(arrStat, customStat, overCustomStat, numProperty));
+}
+
+//기타 육성정보 업데이트
+//유닛 경험치
+function SimulatorEtcUpdate_Exp(){
+	var exp=0;
+	var levelIdx=$("#simulatorConfig .level").val();
+	var levelName=$("#simulatorConfig .level option:selected").text();
+	for(i=0; i<levelIdx; i++){	//지정한 레벨 이전까지
+		exp += arrLevelExp[i];
+	}	
+	var str="이 유닛을 <strong>" + levelName + "</strong>까지 키우는데는 총 <strong>" + exp + "</strong>의 경험치가 필요합니다.<br/>";	
+	
+	var missionSec=80;
+	var missionExp=170;
+	var missionNum=Math.ceil( (exp/missionExp) );
+	var missionTime=missionNum*missionSec;
+	str += GetTimeStringFromSec(missionSec) + "가 소요되는 경험치 " + missionExp + "의 미션을 수행 시 "
+		+ missionNum + "회, " + GetTimeStringFromSec(missionTime) + "의 시간이 소요됩니다.";
+	$("#simulatorEtc .exp").html(str);
 }

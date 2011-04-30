@@ -26,11 +26,24 @@ if($unitID!=""){
 		$infoRow = mysql_fetch_array($infoResult);
 	}
 }
+
+//유닛 레벨
+$levelQuery="SELECT * FROM level";
+$levelResult=mysql_query($levelQuery);
+
+//유닛 경험치
+$expQuery="SELECT Exp
+	FROM levelexp AS le
+	LEFT JOIN level AS l ON le.Level=l.Level
+	WHERE le.RankPrefix='$infoRow[RankPrefix]' AND le.RankSuffix='$infoRow[RankSuffix]'
+	ORDER BY l.No ASC";
+$expResult=mysql_query($expQuery);
 ?>
 
 <!--유닛 시뮬레이터 페이지-->
 <h2>유닛 시뮬레이터(베타)</h2>
 지정한 유닛의 성장을 시뮬레이트합니다. 스탯공식은 이에르님의 능력치표를 참고하였습니다.<br/>
+모든 유닛은 커스텀 슬롯이 4개 있다고 가정합니다.<br/>
 <br/>
 <form action="unit_simulator.php" method="get">
 	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="inputtext suggest_common" value="<?=$model?>"/>
@@ -56,17 +69,43 @@ if($unitID==""){
 ?>
 <script language="javascript" src="scripts/unitSimulator.js"></script>
 
-<!--유닛 기본정보-->
-<table class="sdgoTable unitSimulator">
+<!--기본정보-->
+<table id="simulatorConfig" class="sdgoTable unitSimulator">
 <tr>
 <th>선택 유닛</th>
-<td>
-	<?=$infoRow[Model]?>&nbsp;(<?=GetRankFull($infoRow[RankPrefix], $infoRow[RankSuffix])?>랭크 <?=GetPropertyKor($infoRow[Property])?>)
-</td>
+<td><?=$infoRow[Model]?></td>
+<th>랭크</th>
+<td class="rank center"><?=GetRankFull($infoRow[RankPrefix], $infoRow[RankSuffix])?></td>
+<th>속성</th>
+<td class="property center"><?=GetPropertyKor($infoRow[Property])?></td>
 </tr>
+<tr>
+<th>레벨</th>
+<td>
+	<select class="level" onchange="javascript:simulatorLevelChange()">
+	<?
+	$levelCount=mysql_num_rows($levelResult);
+	$i=0;
+	while($levelRow = mysql_fetch_array($levelResult)){
+		$strText="<option value='".$levelRow[No]."' ";
+		if ($i==$levelCount-1){
+			$strText .= "selected='selected' ";
+		}
+		$strText .= ">".$levelRow[Level]."</option>";
+		echo $strText;
+		$i++;
+	}
+	?>	
+	</select>
+</td>
+<th>커스텀 포인트</th>
+<td class="point_custom center">0</td>
+<th>오버커스텀 포인트</th>
+<td class="point_overcustom center">0</td>
 </table>
 <br/>
 
+<!--스탯-->
 <table id="simulatorStat" class="sdgoTable unitSimulator">
 <thead>
 <tr>
@@ -112,10 +151,13 @@ for($i=0; $i<7; $i++){
 	}
 	?>
 
-	<td class="right"></td>
+	<!--최종 성능-->
+	<td class="right finalStat"></td>
+	
+	<!--그래프-->
 	<?if($i==0){?>
 	<td rowspan="7">
-		<iframe id="frameGraph"
+		<iframe class="frameGraph"
 		src=""
 		border="0" frameborder="0" scrolling="no" style="width:210px;height:140px">
 		</iframe>
@@ -127,16 +169,51 @@ for($i=0; $i<7; $i++){
 ?>
 <tr>
 <th>비고</th>
-<td colspan="9" id="note">&nbsp;</td>
+<td colspan="9" class="note">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<br/>
+
+<!--기타-->
+<table id="simulatorEtc" class="sdgoTable unitSimulator">
+<thead>
+<tr>
+<th></th>
+<th class="header">기타 육성정보</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>유닛 경험치</th>
+<td class="exp"></td>
 </tr>
 </tbody>
 </table>
 
+
 <script language="javascript">
 SimulatorInit(
+	//기본 스탯
 	new Array(<?=$infoRow[UnitStat1]?>, <?=$infoRow[UnitStat2]?>, <?=$infoRow[UnitStat3]?>, <?=$infoRow[UnitStat4]?>, <?=$infoRow[UnitStat5]?>, <?=$infoRow[UnitStat6]?>),
+	//스킬
 	new Array("<?=$infoRow[Skill1Name]?>", "<?=$infoRow[Skill2Name]?>", "<?=$infoRow[Skill3Name]?>"),
-	"<?=PropertyToNum($infoRow[Property])?>"
+	//속성
+	"<?=PropertyToNum($infoRow[Property])?>",
+	//경험치
+	new Array(
+		<?
+		$expCount=mysql_num_rows($expResult);
+		$i=0;
+		while($expRow = mysql_fetch_array($expResult)){
+			$exp=0;
+			if( $expRow[Exp] != null ) $exp=$expRow[Exp];
+			echo $exp;
+			if ($i<$expCount-1) echo ", ";
+			$i++;
+		}
+		?>
+	)
 );
 </script>
 <?
