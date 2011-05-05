@@ -43,7 +43,7 @@ $expResult=mysql_query($expQuery);
 <!--유닛 시뮬레이터 페이지-->
 <h2>유닛 시뮬레이터(베타)</h2>
 지정한 유닛의 성장을 시뮬레이트합니다. 스탯공식은 이에르님의 능력치표를 참고하였습니다.<br/>
-모든 유닛은 커스텀 슬롯이 4개 있다고 가정합니다.<br/>
+모든 유닛은 커스텀 슬롯이 4개 있으며 오버커스텀에 실패하지 않는다고 가정합니다.<br/>
 <br/>
 <form action="unit_simulator.php" method="get">
 	유닛명: <input type="text" autocomplete="off" id="model_q" name="model_q" class="inputtext suggest_common" value="<?=$model?>"/>
