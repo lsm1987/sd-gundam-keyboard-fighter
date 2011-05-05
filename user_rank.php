@@ -72,7 +72,7 @@ if(mysql_num_rows($result)==0){
 	while($row = mysql_fetch_array($result)){ 
 		echo "<tr>";
 		//계급
-		echo "<td><img src='http://img.gundam.netmarble.net/img/capaguide/class/".FillDigit($row[No],2).".gif' style='vertical-align:middle'/>&nbsp;$row[UserRank]</td>";
+		echo "<td><img src='http://img.gundam.netmarble.net/img/capaguide/class/".FillDigit($row[No]+1,2).".gif' style='vertical-align:middle'/>&nbsp;$row[UserRank]</td>";
 	  
 		//순위
 		$firstRanking=$prevRanking+1; //지난 랭킹 다음
