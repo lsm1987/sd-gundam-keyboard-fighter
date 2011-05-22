@@ -113,7 +113,11 @@ if(mysql_num_rows($result)==0){ //검색 결과가 없을 때
 			if($curUnitID==$unitID){
 				$searched="class='searched'";
 			}
-			echo "<td $searched><span class='subscript'>".$curUnitRank."랭크 $curUnitProperty</span><br/><a href='unit_info.php?unitID_q=$curUnitID'>$curUnitName</a></td>";
+			if( $curUnitID != null ) {
+				echo "<td $searched><span class='subscript'>".$curUnitRank."랭크 $curUnitProperty</span><br/><a href='unit_info.php?unitID_q=$curUnitID'>$curUnitName</a></td>";
+			}else{
+				echo "<td></td>";
+			}
 		}
 		echo "</tr>";
 	}
