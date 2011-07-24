@@ -18,13 +18,15 @@ if($rID!=""){
 	$page=1;//1페이지는 항상 존재
 	while(true){
 		$html=GetHTML($url.$page);
+		// echo $html;
 		if($html==null || strrpos($html,"DOCTYPE")!=FALSE){
 			break;
 		}
-		$xml=(array)simplexml_load_string($html);
-		if($xml==FALSE){
+		$loadRes=simplexml_load_string($html);
+		if($loadRes==FALSE){
 			break;
 		}
+		$xml=(array)$loadRes;
 		
 		//유닛이 1개일 때
 		if(count($xml["xUnitLists"]) == 7){
@@ -73,6 +75,11 @@ if($rID!=""){
 마이룸 rID는 마이룸 이동 후 주소창의 rid항목을,<br/>
 또는 마이룸에서 우클릭->소스보기->유닛진열장을 검색하여 나오는 링크 주소의 rid항목을 복사하시면됩니다.<br/>
 예: http://gundam.netmarble.net/MyRoom/Diorama/mr_UnitView.asp?rid=<font color="red">d0c45dbe135abe922e45bb702af8fcbf</font>&menuId=2<br/>
+<br/>
+<font color="red">
+* 2011년 07월 현재 마이룸 정보를 얻어오려 할 때 공홈 인트로 페이지 정보만 줄창 얻어오는(...) 문제가 있어 기능이 정상적으로 동작하지 않습니다.<br/>
+공홈 인트로 페이지가 없어진 뒤에 기능을 이용해주시면 감사하겠습니다... OTL<br/>
+</font>
 <br/>
 
 <form action="diorama_analysis.php" method="get">
