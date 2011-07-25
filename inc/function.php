@@ -26,6 +26,7 @@ function GetHTML($url){
 	curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
 	//curl_setopt ($ch, CURLOPT_COOKIEJAR, 'C:\APM_Setup\htdocs\sdgo\cookie.txt');
 	//curl_setopt ($ch, CURLOPT_COOKIEFILE, 'C:\APM_Setup\htdocs\sdgo\cookie.txt');
+	curl_setopt ($ch, CURLOPT_COOKIE, 'sdMain=1; sdIntro=1');
 	$file_contents = curl_exec($ch);
 	curl_close($ch);
 	return $file_contents;

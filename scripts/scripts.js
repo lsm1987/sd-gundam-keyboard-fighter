@@ -24,3 +24,45 @@ function GetTimeStringFromSec(sec) {
 	str += sec+"초";
 	return str;
 }
+
+function ConvLevelNameToNum(levelName) {
+	if (levelName == "루키") {
+		return 1;
+	} else if (levelName == "솔져") {
+		return 2;
+	} else if (levelName == "베테랑") {
+		return 3;
+	} else if (levelName == "에이스") {
+		return 4;
+	} else if (levelName == "커스텀1") {
+		return 5;
+	} else if (levelName == "커스텀2") {
+		return 6;
+	} else if (levelName == "커스텀3") {
+		return 7;
+	} else if (levelName == "커스텀4") {
+		return 8;
+	} else if (levelName == "오버커스텀1") {
+		return 9;
+	} else if (levelName == "오버커스텀2") {
+		return 10;
+	} else if (levelName == "오버커스텀3") {
+		return 11;
+	} else if (levelName == "오버커스텀4") {
+		return 12;
+	} else if (levelName == "오버커스텀5") {
+		return 13;
+	} else if (levelName == "오버커스텀6") {
+		return 14;
+	} else if (levelName == "오버커스텀Ex") {
+		return 15;
+	}
+	
+	return 0;
+}
+
+function CompLevelName(a,b) {
+	var na = ConvLevelNameToNum(a);
+	var nb = ConvLevelNameToNum(b);
+	return (na==nb)?0:(na<nb)?-1:1;
+}
