@@ -18,14 +18,16 @@ if($rID!=""){
 	$page=1;//1페이지는 항상 존재
 	while(true){
 		$html=GetHTML($url.$page);
-		// echo $html;
+		//echo $html;
 		if($html==null || strrpos($html,"DOCTYPE")!=FALSE){
 			break;
 		}
 		$loadRes=simplexml_load_string($html);
+		/*
 		if($loadRes==FALSE){
 			break;
 		}
+		*/
 		$xml=(array)$loadRes;
 		
 		//유닛이 1개일 때
@@ -76,12 +78,6 @@ if($rID!=""){
 또는 마이룸에서 우클릭->소스보기->유닛진열장을 검색하여 나오는 링크 주소의 rid항목을 복사하시면됩니다.<br/>
 예: http://gundam.netmarble.net/MyRoom/Diorama/mr_UnitView.asp?rid=<font color="red">d0c45dbe135abe922e45bb702af8fcbf</font>&menuId=2<br/>
 <br/>
-<font color="red">
-* 2011년 07월 현재 마이룸 정보를 얻어오려 할 때 공홈 인트로 페이지 정보만 줄창 얻어오는(...) 문제가 있어 기능이 정상적으로 동작하지 않습니다.<br/>
-공홈 인트로 페이지가 없어진 뒤에 기능을 이용해주시면 감사하겠습니다... OTL<br/>
-</font>
-<br/>
-
 <form action="diorama_analysis.php" method="get">
 	마이룸 rID: <input type="text" autocomplete="off" class="inputtext" style="width:300px"
 	id="rID" name="rID" value="<?=$rID?>"/>
@@ -113,7 +109,7 @@ if(count($arrUnit)==0){
 	<th class="table-sortable:alphanumeric">유닛명</th>
 	<th class="table-sortable:alphanumeric">랭크</th>
 	<th class="table-sortable:alphanumeric">속성</th>
-	<th>레벨</th>
+	<th class="table-sortable:levelName">레벨</th>
 	
 	<th class="table-sortable:numeric">승률</th>
 	<th class="table-sortable:numeric">전</th>
@@ -146,7 +142,14 @@ if(count($arrUnit)==0){
 			<option value="function(val){return (val=='빠');}">빠</option>
 		</select>
 	</th>
-	<th></th>
+	<th>
+		<select onchange="Table.filter(this,this)">
+			<option value="function(){return true;}">All</option>
+			<option value="function(val){return (val=='루키' || val=='솔져' || val=='베테랑' || val=='에이스');}">기본</option>
+			<option value="function(val){var pattern=/^(커스텀)/; return (pattern.test(val));}">커스텀</option>
+			<option value="function(val){var pattern=/^(오버커스텀)/; return (pattern.test(val));}">오버커스텀</option>
+		</select>
+	</th>
 	
 	<th>
 		<select onchange="Table.filter(this,this)">
@@ -191,6 +194,7 @@ for($i=0; $i<count($arrUnit); $i++){
 	$unit=$arrUnit[$i];
 	$property=NumToProperty($unit[Utype]);
 	$unitrank=(($unit[xUnitRank]==0)?"-":$unit[xUnitRank]);
+	$unitWinPercent = number_format($unit[UnitWinPercent], 2, '.', '').'%';
 	$killrate=0;
 	if($unit[UnitDead]!=0){
 		$killrate=str_replace(",","",$unit[xUnitKill])/str_replace(",","",$unit[UnitDead]);
@@ -205,7 +209,7 @@ for($i=0; $i<count($arrUnit); $i++){
 		<td class='center'>$property</td>
 		<td class='center'>$unit[LevelNm]</td>
 		
-		<td class='right'>$unit[UnitWinPercent]</td>
+		<td class='right'>$unitWinPercent</td>
 		
 		<td class='right'>$unit[UnitBattle]</td>
 		<td class='right'>$unit[UnitWin]</td>

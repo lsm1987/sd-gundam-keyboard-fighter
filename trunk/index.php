@@ -14,6 +14,7 @@
 <h3>주요 업데이트 일자</h3>
 <p>
 <div id="update">
+2011.07.25 : 유닛보관함분석 정상화. Thanks for PositiveFeedback!!<br/>
 2011.07.24 : 07월 21일 업데이트 반영.<br/>
 2011.06.19 : 06월 16일 업데이트 반영.<br/>
 2011.05.22 : 05월 19일 업데이트 반영.<br/>
@@ -42,7 +43,8 @@
 <a href="javascript:GoMyroom('87de59d02fe185f15f9f708f9197e87c')">제네식엑시아</a>,&nbsp;
 <a href="javascript:GoMyroom('10927f808b47ccf3dc7cf2a0e2167ddf')">참두부</a>,&nbsp;
 <a href="javascript:GoMyroom('4f7348aa74886d4ba57f1481f395fa0c')">춤추는리가지</a>,&nbsp;
-<a href="javascript:GoMyroom('33b22ceda218c5a6cfe6b4d42cc713b7')">메가날백</a>
+<a href="javascript:GoMyroom('33b22ceda218c5a6cfe6b4d42cc713b7')">메가날백</a>,&nbsp;
+PositiveFeedback
 </p>
 
 <h3>만든이 정보</h3>

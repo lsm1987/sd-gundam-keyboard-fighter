@@ -114,6 +114,10 @@ var Sort = (function(){
 		}
 		return 9999999999999; // So non-parsed dates will be last, not first
 	};
+	
+	sort.levelName = function(a,b) {
+		return CompLevelName(a,b);
+	};
 
 	return sort;
 })();
