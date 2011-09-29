@@ -53,6 +53,7 @@ foreach($arrRank as $rank){
 <!--레벨별 경험치 구간 테이블-->
 <h2>레벨별 경험치 구간</h2>
 자료 출처: <a href="http://sdgowiki.com/wiki/Unit_EXP_Table" target="_blank">SDGO Wiki</a><br/>
+- CS 4커, AR 3커, SR 3커 경험치 제보받습니다.<br/>
 <br/>
 <?
 //모든 레벨이 순서대로 저장된 배열 만들기
